@@ -2,7 +2,6 @@ package com.example.rushnewsapp;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -41,31 +40,33 @@ public class MoreinfoActivity extends AppCompatActivity {
         deviceInfoLayout = findViewById(R.id.device_info_layout);
         signOut = findViewById(R.id.sign_out);
 
-        // Back button functionality
+        // Back button
         arrowBack.setOnClickListener(v -> finish());
 
-        // More info icon click (you can expand this logic)
+        // Optional: handle more info icon
         moreInfoIcon.setOnClickListener(v ->
                 Toast.makeText(this, "More options coming soon", Toast.LENGTH_SHORT).show());
 
-        // Home layout click
+        // Home
         homeLayout.setOnClickListener(v ->
                 Toast.makeText(this, "Home clicked", Toast.LENGTH_SHORT).show());
-        // startActivity(new Intent(this, HomeActivity.class)); // Uncomment if HomeActivity exists
+        // startActivity(new Intent(this, HomeActivity.class));
 
-        // Profile layout click
+        // Profile
         profileLayout.setOnClickListener(v ->
                 Toast.makeText(this, "My Profile clicked", Toast.LENGTH_SHORT).show());
         // startActivity(new Intent(this, ProfileActivity.class));
 
-        // Device info layout click
-        deviceInfoLayout.setOnClickListener(v ->
-                Toast.makeText(this, "Device Info clicked", Toast.LENGTH_SHORT).show());
-        // startActivity(new Intent(this, DeviceInfoActivity.class));
+        // Device Info - navigate to DeviceInfoActivity
+        deviceInfoLayout.setOnClickListener(v -> {
+            Intent intent = new Intent(MoreinfoActivity.this, DeviceInfoActivity.class);
+            startActivity(intent);
+        });
 
-        // Sign out click
+
+        // Sign out
         signOut.setOnClickListener(v ->
                 Toast.makeText(this, "Signed out", Toast.LENGTH_SHORT).show());
-        // Implement actual sign-out logic (e.g., clear user session, go to login screen)
+        // Implement sign-out logic here
     }
 }
