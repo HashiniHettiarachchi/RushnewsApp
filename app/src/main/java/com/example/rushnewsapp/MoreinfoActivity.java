@@ -25,7 +25,7 @@ public class MoreinfoActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_moreinfo);
 
-        // Handle edge insets for immersive UI
+        // Handle edge insets
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -40,33 +40,33 @@ public class MoreinfoActivity extends AppCompatActivity {
         deviceInfoLayout = findViewById(R.id.device_info_layout);
         signOut = findViewById(R.id.sign_out);
 
-        // Back button
+        // Go back
         arrowBack.setOnClickListener(v -> finish());
 
-        // Optional: handle more info icon
+        // Placeholder for more info icon
         moreInfoIcon.setOnClickListener(v ->
                 Toast.makeText(this, "More options coming soon", Toast.LENGTH_SHORT).show());
 
-        // Home
+        // Home layout clicked
         homeLayout.setOnClickListener(v ->
                 Toast.makeText(this, "Home clicked", Toast.LENGTH_SHORT).show());
-        // startActivity(new Intent(this, HomeActivity.class));
+        // You can enable navigation to HomeActivity here
 
-        // Profile
-        profileLayout.setOnClickListener(v ->
-                Toast.makeText(this, "My Profile clicked", Toast.LENGTH_SHORT).show());
-        // startActivity(new Intent(this, ProfileActivity.class));
+        // My Profile clicked → open UserInfoActivity
+        profileLayout.setOnClickListener(v -> {
+            Intent intent = new Intent(MoreinfoActivity.this, UserInfoActivity.class);
+            startActivity(intent);
+        });
 
-        // Device Info - navigate to DeviceInfoActivity
+        // Device Info clicked
         deviceInfoLayout.setOnClickListener(v -> {
             Intent intent = new Intent(MoreinfoActivity.this, DeviceInfoActivity.class);
             startActivity(intent);
         });
 
-
-        // Sign out
+        // Sign out logic
         signOut.setOnClickListener(v ->
                 Toast.makeText(this, "Signed out", Toast.LENGTH_SHORT).show());
-        // Implement sign-out logic here
+        // Add actual sign-out logic here (Firebase or SharedPreferences clear, etc.)
     }
 }

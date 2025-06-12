@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/user_info_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    tools:context=".UserInfoActivity">
+
+    <!-- Back Arrow -->
+    <ImageView
+        android:id="@+id/back_arrow"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/arrow"
+        android:contentDescription="Back"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp" />
+
+    <!-- More Info (Optional Menu) -->
+    <ImageView
+        android:id="@+id/more_info"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/menu"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@id/back_arrow"
+        android:contentDescription="More" />
+
+    <!-- User Info Text -->
+    <TextView
+        android:id="@+id/text_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="User Information"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp" />
+
+    <!-- User Information Display -->
+    <TextView
+        android:id="@+id/user_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Username: Hashini\nEmail: 202201537@stu.cmb.ac.lk"
+        android:layout_below="@id/text_title"
+        android:layout_marginTop="20dp"
+        android:textSize="16sp"
+        android:layout_centerHorizontal="true" />
+
+    <!-- Edit Info Button -->
+    <Button
+        android:id="@+id/btn_edit_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Edit Info"
+        android:layout_below="@id/user_info"
+        android:layout_marginTop="30dp"
+        android:backgroundTint="#4285F4"
+        android:textColor="#FFFFFF" />
+
+    <!-- Sign Out Button -->
+    <Button
+        android:id="@+id/btn_sign_out"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sign Out"
+        android:layout_below="@id/btn_edit_info"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#F44336"
+        android:textColor="#FFFFFF" />
+
+</RelativeLayout>
