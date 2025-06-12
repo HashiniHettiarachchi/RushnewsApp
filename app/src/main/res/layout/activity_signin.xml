@@ -1,0 +1,123 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E5E5E5">
+
+    <!-- Top Bar -->
+    <LinearLayout
+        android:id="@+id/top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:background="#FEF7FF"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:layout_alignParentTop="true">
+
+        <ImageView
+            android:id="@+id/arrow_back"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="8dp"
+            android:contentDescription="Back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="InfoRush"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif"
+            android:layout_marginStart="16dp"
+            android:textColor="#222222" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/b_image"
+        android:layout_width="121dp"
+        android:layout_height="121dp"
+        android:src="@drawable/b_image"
+        android:layout_below="@id/top_bar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"
+        android:contentDescription="b_image" />
+
+    <TextView
+        android:id="@+id/tvUserName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="User Name:"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif"
+        android:textColor="#222"
+        android:layout_below="@id/b_image"
+        android:layout_marginTop="16dp"
+        android:layout_alignStart="@id/etUserName"
+        android:layout_marginStart="16dp"/>
+
+    <EditText
+        android:id="@+id/etUserName"
+        android:layout_width="270dp"
+        android:layout_height="wrap_content"
+        android:minHeight="56dp"
+        android:hint="Enter your user name"
+        android:fontFamily="sans-serif"
+        android:textColor="#000"
+        android:textColorHint="#888"
+        android:background="#FF3B30"
+        android:layout_below="@id/tvUserName"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="4dp"
+        android:padding="12dp"/>
+
+    <TextView
+        android:id="@+id/tvPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Password:"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif"
+        android:textColor="#222"
+        android:layout_below="@id/etUserName"
+        android:layout_marginTop="12dp"
+        android:layout_alignStart="@id/etPassword"
+        android:layout_marginStart="16dp"/>
+
+    <EditText
+        android:id="@+id/etPassword"
+        android:layout_width="270dp"
+        android:layout_height="wrap_content"
+        android:minHeight="56dp"
+        android:hint="Enter your password"
+        android:fontFamily="sans-serif"
+        android:textColor="#000"
+        android:textColorHint="#888"
+        android:background="#FF3B30"
+        android:inputType="textPassword"
+        android:layout_below="@id/tvPassword"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="4dp"
+        android:padding="12dp"/>
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:layout_below="@+id/etPassword"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_centerHorizontal="true"
+        android:backgroundTint="#007BFF"
+        android:fontFamily="sans-serif"
+        android:text="Login"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:padding="12dp" />
+
+
+</RelativeLayout>

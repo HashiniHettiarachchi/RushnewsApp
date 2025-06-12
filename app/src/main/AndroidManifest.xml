@@ -12,18 +12,27 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RushnewsApp"
         tools:targetApi="31">
+
+        <!-- SigninActivity -->
         <activity
-            android:name=".SplashActivity"
+            android:name=".SigninActivity"
             android:exported="false" />
+
+        <!-- MainActivity -->
         <activity
             android:name=".MainActivity"
+            android:exported="false" />
+
+        <!-- SplashActivity - This should be the launcher activity -->
+        <activity
+            android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>
