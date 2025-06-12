@@ -1,21 +1,19 @@
 package com.example.rushnewsapp;
 
-import android.os.Bundle;
-
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-
-import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 public class UserInfoActivity extends AppCompatActivity {
     private Button btnEditInfo, btnSignOut;
@@ -27,7 +25,6 @@ public class UserInfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_user_info);
-
 
         // Initialize views
         backArrow = findViewById(R.id.back_arrow);
@@ -44,10 +41,11 @@ public class UserInfoActivity extends AppCompatActivity {
                 Toast.makeText(this, "More options coming soon...", Toast.LENGTH_SHORT).show()
         );
 
-        // Edit Info (Placeholder)
-        btnEditInfo.setOnClickListener(v ->
-                Toast.makeText(this, "Edit Info clicked", Toast.LENGTH_SHORT).show()
-        );
+        // Navigate to EditInfoActivity when edit button is clicked
+        btnEditInfo.setOnClickListener(v -> {
+            Intent intent = new Intent(UserInfoActivity.this, EditInfoActivity.class);
+            startActivity(intent);
+        });
 
         // Sign out confirmation popup
         btnSignOut.setOnClickListener(v -> showSignOutDialog());
@@ -56,7 +54,7 @@ public class UserInfoActivity extends AppCompatActivity {
     private void showSignOutDialog() {
         new AlertDialog.Builder(this)
                 .setTitle("Sign Out")
-                .setMessage("You are really want to sign out?")
+                .setMessage("You really want to sign out?")
                 .setPositiveButton("OK", (dialog, which) -> {
                     // Sign out logic here (e.g., clear session, go to login)
                     Toast.makeText(UserInfoActivity.this, "Signed out", Toast.LENGTH_SHORT).show();
