@@ -31,26 +31,15 @@ public class SplashActivity extends AppCompatActivity {
         signup = findViewById(R.id.signup);
 
         // Sign In button click listener
-        signin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(SplashActivity.this, SigninActivity.class);
-                startActivity(intent);
-                // Optional: finish(); to prevent going back to splash
-            }
+        signin.setOnClickListener(v -> {
+            startActivity(new Intent(SplashActivity.this, SigninActivity.class));
+            finish(); // Remove if you want to keep splash in back stack
         });
 
-        // Sign Up button click listener (if you want to add signup functionality later)
-        signup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Add SignupActivity later if needed
-                // Intent intent = new Intent(SplashActivity.this, SignupActivity.class);
-                // startActivity(intent);
-
-                // For now, just show a message
-                android.widget.Toast.makeText(SplashActivity.this, "Sign Up functionality coming soon!", android.widget.Toast.LENGTH_SHORT).show();
-            }
+        // Sign Up button click listener (updated)
+        signup.setOnClickListener(v -> {
+            startActivity(new Intent(SplashActivity.this, SignupActivity.class));
+            finish(); // Remove if you want to keep splash in back stack
         });
     }
 }

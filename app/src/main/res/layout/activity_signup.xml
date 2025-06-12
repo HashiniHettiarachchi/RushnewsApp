@@ -1,0 +1,215 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFF"
+    tools:context=".SignupActivity">
+
+<!-- Top App Bar -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/top_bar"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:background="#FEF7FF"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:id="@+id/arrow_back"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+
+            android:contentDescription="Back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginStart="16dp"/>
+
+        <TextView
+            android:id="@+id/top_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="InfoRush"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:textColor="#222222"
+            app:layout_constraintStart_toEndOf="@id/arrow_back"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginStart="16dp"/>
+
+        <ImageView
+            android:id="@+id/profile_info"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:contentDescription="Profile Info"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginEnd="16dp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Logo -->
+    <ImageView
+        android:id="@+id/b_image"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/b_image"
+        android:contentDescription="Logo"
+        app:layout_constraintTop_toBottomOf="@id/top_bar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp"/>
+
+    <!-- User Name Label -->
+    <TextView
+        android:id="@+id/tvUserName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="User Name:"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:textColor="#222"
+        app:layout_constraintTop_toBottomOf="@id/b_image"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="32dp"/>
+
+    <!-- User Name Input -->
+    <EditText
+        android:id="@+id/etUserName"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:hint="Enter your user name"
+        android:backgroundTint="#FF3B30"
+        android:background="#FF3B30"
+        android:textColor="#000"
+        android:textColorHint="#888"
+        app:layout_constraintTop_toBottomOf="@id/b_image"
+        app:layout_constraintStart_toEndOf="@id/tvUserName"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginStart="12dp"
+        android:padding="12dp"/>
+
+    <!-- Password Label -->
+    <TextView
+        android:id="@+id/tvPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Password:"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:textColor="#222"
+        app:layout_constraintTop_toBottomOf="@id/etUserName"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="32dp"/>
+
+    <!-- Password Input -->
+    <EditText
+        android:id="@+id/etPassword"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:hint="Enter your password"
+        android:backgroundTint="#FF3B30"
+        android:background="#FF3B30"
+        android:textColor="#000"
+        android:textColorHint="#888"
+        android:inputType="textPassword"
+        app:layout_constraintTop_toBottomOf="@id/etUserName"
+        app:layout_constraintStart_toEndOf="@id/tvPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginStart="12dp"
+        android:padding="12dp"/>
+
+    <!-- Confirm Password Label -->
+    <TextView
+        android:id="@+id/tvConfirmPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Confirm Password:"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:textColor="#222"
+        app:layout_constraintTop_toBottomOf="@id/etPassword"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="32dp"/>
+
+    <!-- Confirm Password Input -->
+    <EditText
+        android:id="@+id/etConfirmPassword"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:hint="Re-enter your password"
+        android:backgroundTint="#FF3B30"
+        android:background="#FF3B30"
+        android:textColor="#000"
+        android:textColorHint="#888"
+        android:inputType="textPassword"
+        app:layout_constraintTop_toBottomOf="@id/etPassword"
+        app:layout_constraintStart_toEndOf="@id/tvConfirmPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginStart="12dp"
+        android:padding="12dp"/>
+
+    <!-- Email Label -->
+    <TextView
+        android:id="@+id/tvEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email:"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:textColor="#222"
+        app:layout_constraintTop_toBottomOf="@id/etConfirmPassword"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="32dp"/>
+
+    <!-- Email Input -->
+    <EditText
+        android:id="@+id/etEmail"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:hint="Enter your email"
+        android:backgroundTint="#FF3B30"
+        android:background="#FF3B30"
+        android:textColor="#000"
+        android:textColorHint="#888"
+        android:inputType="textEmailAddress"
+        app:layout_constraintTop_toBottomOf="@id/etConfirmPassword"
+        app:layout_constraintStart_toEndOf="@id/tvEmail"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginStart="12dp"
+        android:padding="12dp"/>
+
+    <!-- Sign Up Button -->
+    <Button
+        android:id="@+id/btnSignup"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:text="Sign Up"
+        android:textColor="#FFF"
+        android:textSize="18sp"
+        android:backgroundTint="#007BFF"
+        app:layout_constraintTop_toBottomOf="@id/etEmail"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
