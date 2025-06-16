@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "245907799457",
+    "project_id": "nikiya123455",
+    "storage_bucket": "nikiya123455.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:245907799457:android:06549c5b04f21f5a5edfe0",
+        "android_client_info": {
+          "package_name": "com.example.rushnewsapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDa0IOM9O_zZIu8Oxz1LmVLAPzEU4GKTAw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

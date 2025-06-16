@@ -13,11 +13,14 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class MoreinfoActivity extends AppCompatActivity {
 
     ImageView arrowBack, moreInfoIcon;
     LinearLayout homeLayout, profileLayout, deviceInfoLayout;
-    TextView signOut;
+    TextView signOut, userNameTextView;  // Added userNameTextView
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +42,22 @@ public class MoreinfoActivity extends AppCompatActivity {
         profileLayout = findViewById(R.id.profile_layout);
         deviceInfoLayout = findViewById(R.id.device_info_layout);
         signOut = findViewById(R.id.sign_out);
+        userNameTextView = findViewById(R.id.user_name);  // Bind user_name TextView
+
+        // ✅ Show the logged-in user's name or email
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            String displayName = user.getDisplayName();
+            String email = user.getEmail();
+
+            if (displayName != null && !displayName.isEmpty()) {
+                userNameTextView.setText(displayName);
+            } else {
+                userNameTextView.setText(email);  // fallback
+            }
+        } else {
+            userNameTextView.setText("Guest User");  // fallback if not logged in
+        }
 
         // Go back
         arrowBack.setOnClickListener(v -> finish());
@@ -47,10 +66,13 @@ public class MoreinfoActivity extends AppCompatActivity {
         moreInfoIcon.setOnClickListener(v ->
                 Toast.makeText(this, "More options coming soon", Toast.LENGTH_SHORT).show());
 
-        // Home layout clicked
-        homeLayout.setOnClickListener(v ->
-                Toast.makeText(this, "Home clicked", Toast.LENGTH_SHORT).show());
-        // You can enable navigation to HomeActivity here
+
+        // Home layout clicked → open NewsActivity
+        homeLayout.setOnClickListener(v -> {
+            Intent intent = new Intent(MoreinfoActivity.this, NewsActivity.class);
+            startActivity(intent);
+        });
+
 
         // My Profile clicked → open UserInfoActivity
         profileLayout.setOnClickListener(v -> {
@@ -67,6 +89,6 @@ public class MoreinfoActivity extends AppCompatActivity {
         // Sign out logic
         signOut.setOnClickListener(v ->
                 Toast.makeText(this, "Signed out", Toast.LENGTH_SHORT).show());
-        // Add actual sign-out logic here (Firebase or SharedPreferences clear, etc.)
+        // Add actual FirebaseAuth.getInstance().signOut(); here if needed
     }
 }

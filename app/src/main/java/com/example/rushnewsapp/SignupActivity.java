@@ -12,7 +12,11 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class SignupActivity extends AppCompatActivity {
+
+    private FirebaseAuth auth;
 
     private EditText etUserName, etPassword, etConfirmPassword, etEmail;
     private Button btnSignup;
@@ -23,6 +27,9 @@ public class SignupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
+        // Initialize Firebase Auth
+        auth = FirebaseAuth.getInstance();
+
         // Initialize views
         etUserName = findViewById(R.id.etUserName);
         etPassword = findViewById(R.id.etPassword);
@@ -31,45 +38,45 @@ public class SignupActivity extends AppCompatActivity {
         btnSignup = findViewById(R.id.btnSignup);
         arrowBack = findViewById(R.id.arrow_back);
 
-        // Navigate back to SplashActivity on back arrow click
+        // Back to splash screen
         arrowBack.setOnClickListener(v -> {
-            Intent intent = new Intent(SignupActivity.this, SplashActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
-            finish(); // Finish this activity so user can't come back with back button
+            startActivity(new Intent(SignupActivity.this, SplashActivity.class));
+            finish();
         });
 
-        // Sign Up button click handler
-        btnSignup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String username = etUserName.getText().toString().trim();
-                String password = etPassword.getText().toString().trim();
-                String confirmPassword = etConfirmPassword.getText().toString().trim();
-                String email = etEmail.getText().toString().trim();
+        // Sign up logic
+        btnSignup.setOnClickListener(v -> {
+            String username = etUserName.getText().toString().trim();
+            String password = etPassword.getText().toString().trim();
+            String confirmPassword = etConfirmPassword.getText().toString().trim();
+            String email = etEmail.getText().toString().trim();
 
-                // Input validation
-                if (TextUtils.isEmpty(username)) {
-                    etUserName.setError("Please enter your username");
-                } else if (TextUtils.isEmpty(password)) {
-                    etPassword.setError("Please enter your password");
-                } else if (TextUtils.isEmpty(confirmPassword)) {
-                    etConfirmPassword.setError("Please confirm your password");
-                } else if (!password.equals(confirmPassword)) {
-                    etConfirmPassword.setError("Passwords do not match");
-                } else if (TextUtils.isEmpty(email)) {
-                    etEmail.setError("Please enter your email");
-                } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-                    etEmail.setError("Enter a valid email");
-                } else {
-                    // Registration logic (e.g., save to database or Firebase)
-                    Toast.makeText(SignupActivity.this, "Sign Up Successful!", Toast.LENGTH_SHORT).show();
+            if (TextUtils.isEmpty(username)) {
+                etUserName.setError("Please enter your username");
+            } else if (TextUtils.isEmpty(password)) {
+                etPassword.setError("Please enter your password");
+            } else if (TextUtils.isEmpty(confirmPassword)) {
+                etConfirmPassword.setError("Please confirm your password");
+            } else if (!password.equals(confirmPassword)) {
+                etConfirmPassword.setError("Passwords do not match");
+            } else if (TextUtils.isEmpty(email)) {
+                etEmail.setError("Please enter your email");
+            } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                etEmail.setError("Enter a valid email");
+            } else {
+                // Firebase Authentication - Create user
+                auth.createUserWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(task -> {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(SignupActivity.this, "Registration successful!", Toast.LENGTH_SHORT).show();
 
-                    // Optional: navigate to login or home screen here
-                    // Example:
-                    // startActivity(new Intent(SignupActivity.this, LoginActivity.class));
-                    // finish();
-                }
+                                // Optional: go to login or main activity
+                                startActivity(new Intent(SignupActivity.this, SigninActivity.class));
+                                finish();
+                            } else {
+                                Toast.makeText(SignupActivity.this, "Sign-up failed: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                            }
+                        });
             }
         });
     }

@@ -12,7 +12,7 @@
         android:id="@+id/back_arrow"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:src="@drawable/arrow"
+        android:src="@drawable/baseline_arrow_back_24"
         android:contentDescription="Back"
         android:layout_alignParentStart="true"
         android:layout_marginTop="10dp" />
@@ -22,7 +22,7 @@
         android:id="@+id/more_info"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:src="@drawable/menu"
+        android:src="@drawable/baseline_menu_24"
         android:layout_alignParentEnd="true"
         android:layout_alignTop="@id/back_arrow"
         android:contentDescription="More" />
@@ -43,7 +43,7 @@
         android:id="@+id/user_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Username: Hashini\nEmail: 202201537@stu.cmb.ac.lk"
+        android:text=""
         android:layout_below="@id/text_title"
         android:layout_marginTop="20dp"
         android:textSize="16sp"

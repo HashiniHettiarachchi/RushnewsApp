@@ -28,6 +28,13 @@ public class NewsActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        // ✅ Profile icon - go to UserInfoActivity
+        ImageView profileIcon = findViewById(R.id.more_info);
+        profileIcon.setOnClickListener(v -> {
+            Intent intent = new Intent(NewsActivity.this, UserInfoActivity.class);
+            startActivity(intent);
+        });
+
         // Bottom Navigation
         ImageView sportIcon = findViewById(R.id.sport_icon);
         ImageView academicIcon = findViewById(R.id.academic_icon);
